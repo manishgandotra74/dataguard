@@ -43,7 +43,7 @@ export default function Sidebar(props) {
                 {
                     return (<Nav.Item key={item.path}>
                         <Nav.Link className={location.pathname === '/' + item.path ? 'selected' : 'sider'} eventKey={item.path}>
-                        <img className="img" src={`http://localhost:3000/icons/${item.icon}.png`} />
+                        <img className="img" src={`icons/${item.icon}.png`} />
 
     
                             {item.title}</Nav.Link>
