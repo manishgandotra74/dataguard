@@ -13,6 +13,8 @@ export default function Marketing() {
   }
   React.useEffect(() => {
     dispatch(allActions.pluginActions.getPlugins('marketing'))
+}, [])
+  React.useEffect(() => {
     if (plugin?.plugins && plugin?.plugins.title){
       let pluginArray = plugin?.plugins?.plugins.sort()
       

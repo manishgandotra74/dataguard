@@ -12,6 +12,8 @@ export default function Finance() {
     }
     React.useEffect(() => {
         dispatch(allActions.pluginActions.getPlugins('finance'))
+    }, [])
+    React.useEffect(() => {
         if (plugin?.plugins && plugin?.plugins.title) {
             let pluginArray = plugin?.plugins?.plugins.sort()
             let arr = ''

@@ -9,7 +9,7 @@ const getPlugins = (type) => {
       dispatch({ type: Types.FETCHED_PLUGINS_SUCCESSFULLY, payload: user });
 
     } catch (err) {
-      dispatch({ type: Types.SERVER_ERROR, payload: { status: 400, message: "Some error occured" } });
+      dispatch({ type: Types.SERVER_ERROR, payload: null });
     }
   };
 }
@@ -20,7 +20,7 @@ const getTabs = () => {
       dispatch({ type: Types.FETCHED_TABS_SUCCESSFULLY, payload: user });
 
     } catch (err) {
-      dispatch({ type: Types.SERVER_ERROR, payload: { status: 400, message: "Some error occured" } });
+      dispatch({ type: Types.SERVER_ERROR, payload: null });
     }
   };
 }
@@ -31,7 +31,7 @@ const getFilteredPlugins = (filter) => {
       dispatch({ type: Types.FILTERED_FETCHED_PLUGINS_SUCCESSFULLY, payload: user });
 
     } catch (err) {
-      dispatch({ type: Types.SERVER_ERROR, payload: { status: 400, message: "Some error occured" } });
+      dispatch({ type: Types.SERVER_ERROR, payload: null });
     }
   };
 }
@@ -44,7 +44,33 @@ const updateStatus = (value  ,id) => {
       dispatch({ type: Types.PLUGINS_UPDATED_SUCCESSFULLY, payload: user });
 
     } catch (err) {
-      dispatch({ type: Types.SERVER_ERROR, payload: { status: 400, message: "Some error occured" } });
+      dispatch({ type: Types.SERVER_ERROR, payload: null });
+    }
+  };
+}
+const pluginStatus = () => {
+
+  return async function (dispatch) {
+    try {
+      let user = await API.plugin_status_service();
+      dispatch({ type: Types.PLUGIN_STATUS_FETCHED_SUCCESSFULLY, payload: user });
+
+    } catch (err) {
+      dispatch({ type: Types.SERVER_ERROR, payload: null });
+    }
+  };
+}
+const updatePluginStatus = (status ) => {
+const value = {
+  "enabled": status
+}
+  return async function (dispatch) {
+    try {
+      let user = await API.update_plugin_status_service( value);
+      dispatch({ type: Types.PLUGIN_STATUS_UPDATED_SUCCESSFULLY, payload: user });
+
+    } catch (err) {
+      dispatch({ type: Types.SERVER_ERROR, payload: null });
     }
   };
 }
@@ -52,5 +78,7 @@ export default {
     getTabs,
     getPlugins,
     getFilteredPlugins,
-    updateStatus
+    updateStatus,
+    pluginStatus,
+    updatePluginStatus
 }

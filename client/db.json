@@ -31,25 +31,25 @@
     },
     {
       "id": "plugin5",
-      "status": "inactive",
+      "status": "active",
       "title": "Plugin 5",
       "description": "Proident laborum sint nisi enim non aliqua incididunt dolor voluptate tempor."
     },
     {
       "id": "plugin6",
-      "status": "inactive",
+      "status": "active",
       "title": "Plugin 6",
       "description": "Qui cillum velit elit incididunt excepteur nostrud occaecat."
     },
     {
       "id": "plugin7",
-      "status": "inactive",
+      "status": "active",
       "title": "Plugin 7",
       "description": "Culpa excepteur aliquip adipisicing sunt sunt proident aute eiusmod."
     },
     {
       "id": "plugin8",
-      "status": "inactive",
+      "status": "active",
       "title": "Plugin 8",
       "description": "Eiusmod ex labore cillum elit."
     },
@@ -119,5 +119,8 @@
       ],
       "path": "personnel"
     }
-  ]
+  ],
+  "plugin_status": {
+    "enabled": true
+  }
 }

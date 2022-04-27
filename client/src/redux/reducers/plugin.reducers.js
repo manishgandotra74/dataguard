@@ -3,8 +3,10 @@ import { Types } from "../types/plugin.types";
 const INITIAL_STATE = {
     plugins: {},
     tabs: [],
-    filteredPlugins:[],
-    status: ''
+    filteredPlugins: [],
+    status: '',
+    pluginStatus: true,
+    allpluginStatus: true
 };
 const plugin = (state = INITIAL_STATE, { type, payload } = {}) => {
 
@@ -24,10 +26,21 @@ const plugin = (state = INITIAL_STATE, { type, payload } = {}) => {
                 ...state,
                 filteredPlugins: payload,
             };
-            case Types.PLUGINS_UPDATED_SUCCESSFULLY:
+        case Types.PLUGINS_UPDATED_SUCCESSFULLY:
             return {
                 ...state,
                 status: payload,
+            };
+        case Types.PLUGIN_STATUS_UPDATED_SUCCESSFULLY:
+            return {
+                ...state,
+                pluginStatus: payload?.enabled,
+            };
+        case Types.PLUGIN_STATUS_FETCHED_SUCCESSFULLY:
+            console.log(payload);
+            return {
+                ...state,
+                allpluginStatus: payload?.enabled,
             };
         default:
             return state;

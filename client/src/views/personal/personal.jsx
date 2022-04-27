@@ -10,8 +10,10 @@ export default function Personal() {
     dispatch(allActions.pluginActions.updateStatus(id ,value))
 
 };
+React.useEffect(() => {
+  dispatch(allActions.pluginActions.getPlugins('personnel'))
+}, [])
   React.useEffect(() => {
-    dispatch(allActions.pluginActions.getPlugins('personnel'))
     if (plugin?.plugins && plugin?.plugins.title){
       let pluginArray = plugin?.plugins?.plugins.sort()
       

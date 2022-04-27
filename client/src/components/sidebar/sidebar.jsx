@@ -1,19 +1,32 @@
 import React from "react"
-import { Nav } from 'react-bootstrap'
+import { Nav, Form } from 'react-bootstrap'
 import { useLocation, useNavigate } from "react-router-dom";
 import './sidebar.css'
 
 import allActions from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 
-export default function Sidebar() {
+export default function Sidebar(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
     const location = useLocation()
     const plugin = useSelector((state) => state.plugin)
+    const [status, setStatus] = React.useState(true)
+    function onStatusChange() {
+        setStatus(!status)
+        dispatch(allActions.pluginActions.updatePluginStatus(!status))
+
+    }
     React.useEffect(() => {
         dispatch(allActions.pluginActions.getTabs(''))
+        dispatch(allActions.pluginActions.pluginStatus())
     }, [])
+    
+    React.useEffect(() => {
+        setStatus(plugin.allpluginStatus)
+    }, [plugin.allpluginStatus])
+
+
     function navigate_path(path) {
         navigate(`/${path}`);
     }
@@ -23,16 +36,24 @@ export default function Sidebar() {
             onSelect={selectedKey => navigate_path(selectedKey)}
         >
             <div className="sidebar-sticky"></div>
-            <Nav.Item key='key'>
+            <Nav.Item key='header'>
                 <Nav.Link className="heading" eventKey="">Data<strong>Guard</strong></Nav.Link>
             </Nav.Item>
             {plugin?.tabs ? plugin?.tabs?.map(item =>
                 <Nav.Item key={item.path}>
-                    <Nav.Link className={location.pathname === '/'+item.path ? 'selected':'sider'} eventKey={item.path}>{item.title}</Nav.Link>
+                    <Nav.Link className={location.pathname === '/' + item.path ? 'selected' : 'sider'} eventKey={item.path}>{item.title}</Nav.Link>
                 </Nav.Item>) : []}
 
-                <Nav.Item key='key'>
-                <Nav.Link  eventKey="">Data<strong>Guard</strong></Nav.Link>
+            <Nav.Item key='key' >
+                <Form.Check className="plugin"
+                    onChange={() => onStatusChange()}
+                    type="switch"
+                    disabled={props?.data?.status === "disabled"}
+                    isValid={status}
+                    label={status ? 'All plugins enabled' : 'All plugins disabled'}
+                    checked={status}
+                    id="custom-switch"
+                />
             </Nav.Item>
         </Nav>
     </>

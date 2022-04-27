@@ -119,5 +119,8 @@
       ],
       "path": "personnel"
     }
-  ]
+  ],
+  "status":{
+    "enabled": false
+  }
 }

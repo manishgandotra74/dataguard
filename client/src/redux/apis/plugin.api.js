@@ -44,9 +44,33 @@ const update_status_service = async (id, data) => {
       }
     })
 };
+const plugin_status_service = async () => {
+  return axios.get(`http://localhost:5000/plugin_status`)
+    .then((response) => {
+      return response.data
+    })
+    .catch((reason) => {
+      if (reason.response) {
+        return reason.response
+      }
+    })
+};
+const update_plugin_status_service = async (data) => {
+  return axios.put(`http://localhost:5000/plugin_status`, data)
+    .then((response) => {
+      return response.data
+    })
+    .catch((reason) => {
+      if (reason.response) {
+        return reason.response
+      }
+    })
+};
 export default {
   getPlugins_service,
   getTabs_service,
   getFilteredPlugins_service,
-  update_status_service
+  update_status_service,
+  plugin_status_service,
+  update_plugin_status_service
 };
