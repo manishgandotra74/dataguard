@@ -120,7 +120,7 @@
       "path": "personnel"
     }
   ],
-  "status":{
-    "enabled": false
+  "plugin_status": {
+    "enabled": true
   }
 }
