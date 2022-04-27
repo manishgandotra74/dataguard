@@ -1,11 +1,11 @@
 import React from "react"
 import { Nav, Form } from 'react-bootstrap'
 import { useLocation, useNavigate } from "react-router-dom";
-import './sidebar.css'
 
+
+import './sidebar.css'
 import allActions from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
-
 export default function Sidebar(props) {
     const navigate = useNavigate();
     const dispatch = useDispatch()
@@ -15,13 +15,13 @@ export default function Sidebar(props) {
     function onStatusChange() {
         setStatus(!status)
         dispatch(allActions.pluginActions.updatePluginStatus(!status))
-
+        window.location.reload()
     }
     React.useEffect(() => {
         dispatch(allActions.pluginActions.getTabs(''))
         dispatch(allActions.pluginActions.pluginStatus())
     }, [])
-    
+
     React.useEffect(() => {
         setStatus(plugin.allpluginStatus)
     }, [plugin.allpluginStatus])
@@ -40,9 +40,15 @@ export default function Sidebar(props) {
                 <Nav.Link className="heading" eventKey="">Data<strong>Guard</strong></Nav.Link>
             </Nav.Item>
             {plugin?.tabs ? plugin?.tabs?.map(item =>
-                <Nav.Item key={item.path}>
-                    <Nav.Link className={location.pathname === '/' + item.path ? 'selected' : 'sider'} eventKey={item.path}>{item.title}</Nav.Link>
-                </Nav.Item>) : []}
+                {
+                    return (<Nav.Item key={item.path}>
+                        <Nav.Link className={location.pathname === '/' + item.path ? 'selected' : 'sider'} eventKey={item.path}>
+                        <img className="img" src={`http://localhost:3000/icons/${item.icon}.png`} />
+
+    
+                            {item.title}</Nav.Link>
+                    </Nav.Item>)
+                }) : []}
 
             <Nav.Item key='key' >
                 <Form.Check className="plugin"

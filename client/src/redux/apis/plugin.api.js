@@ -1,7 +1,7 @@
 import axios from 'axios'
-
+const JSON_URL = 'http://localhost:5000/'
 const getPlugins_service = async (type) => {
-  return axios.get(`http://localhost:5000/tabdata?path=${type}`)
+  return axios.get(`${JSON_URL}tabdata?path=${type}`)
     .then((response) => {
       return response?.data?.[0]
     })
@@ -12,7 +12,7 @@ const getPlugins_service = async (type) => {
     })
 };
 const getTabs_service = async () => {
-  return axios.get(`http://localhost:5000/tabdata`)
+  return axios.get(`${JSON_URL}tabdata`)
     .then((response) => {
       return response.data
     })
@@ -23,7 +23,7 @@ const getTabs_service = async () => {
     })
 };
 const getFilteredPlugins_service = async (filter) => {
-  return axios.get(`http://localhost:5000/plugins?${filter}`)
+  return axios.get(`${JSON_URL}plugins?${filter}`)
     .then((response) => {
       return response.data
     })
@@ -34,7 +34,7 @@ const getFilteredPlugins_service = async (filter) => {
     })
 };
 const update_status_service = async (id, data) => {
-  return axios.put(`http://localhost:5000/plugins/${id}`, data)
+  return axios.put(`${JSON_URL}plugins/${id}`, data)
     .then((response) => {
       return response.data
     })
@@ -45,7 +45,7 @@ const update_status_service = async (id, data) => {
     })
 };
 const plugin_status_service = async () => {
-  return axios.get(`http://localhost:5000/plugin_status`)
+  return axios.get(`${JSON_URL}plugin_status`)
     .then((response) => {
       return response.data
     })
@@ -56,7 +56,7 @@ const plugin_status_service = async () => {
     })
 };
 const update_plugin_status_service = async (data) => {
-  return axios.put(`http://localhost:5000/plugin_status`, data)
+  return axios.put(`${JSON_URL}plugin_status`, data)
     .then((response) => {
       return response.data
     })
