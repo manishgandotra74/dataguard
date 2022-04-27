@@ -1,7 +1,9 @@
 import API from "../apis/plugin.api";
 import { Types } from "../types/plugin.types";
 
-// Register
+ /*
+    Get All Plugins
+  */
 const getPlugins = (type) => {
   return async function (dispatch) {
     try {
@@ -13,6 +15,9 @@ const getPlugins = (type) => {
     }
   };
 }
+ /*
+    Get All Tabs
+  */
 const getTabs = () => {
   return async function (dispatch) {
     try {
@@ -24,6 +29,9 @@ const getTabs = () => {
     }
   };
 }
+ /*
+    Get Filtered Plugins
+  */
 const getFilteredPlugins = (filter) => {
   return async function (dispatch) {
     try {
@@ -35,6 +43,9 @@ const getFilteredPlugins = (filter) => {
     }
   };
 }
+ /*
+    Update Status of Plugin
+  */
 const updateStatus = (value  ,id) => {
   value.status  = id ? "active":"inactive"
 
@@ -48,6 +59,9 @@ const updateStatus = (value  ,id) => {
     }
   };
 }
+ /*
+    Get Overall Status of Plugins
+  */
 const pluginStatus = () => {
 
   return async function (dispatch) {
@@ -60,6 +74,9 @@ const pluginStatus = () => {
     }
   };
 }
+ /*
+    Update Overall Status of Plugins
+  */
 const updatePluginStatus = (status ) => {
 const value = {
   "enabled": status

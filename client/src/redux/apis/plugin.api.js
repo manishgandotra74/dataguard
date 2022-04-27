@@ -1,5 +1,8 @@
 import axios from 'axios'
 const JSON_URL = 'http://localhost:5000/'
+ /*
+    Get All Plugins
+  */
 const getPlugins_service = async (type) => {
   return axios.get(`${JSON_URL}tabdata?path=${type}`)
     .then((response) => {
@@ -11,6 +14,9 @@ const getPlugins_service = async (type) => {
       }
     })
 };
+ /*
+    Get All Tabs
+  */
 const getTabs_service = async () => {
   return axios.get(`${JSON_URL}tabdata`)
     .then((response) => {
@@ -22,6 +28,9 @@ const getTabs_service = async () => {
       }
     })
 };
+ /*
+    Get Filtered Plugins
+  */
 const getFilteredPlugins_service = async (filter) => {
   return axios.get(`${JSON_URL}plugins?${filter}`)
     .then((response) => {
@@ -33,6 +42,9 @@ const getFilteredPlugins_service = async (filter) => {
       }
     })
 };
+ /*
+    Update Status of Plugin
+  */
 const update_status_service = async (id, data) => {
   return axios.put(`${JSON_URL}plugins/${id}`, data)
     .then((response) => {
@@ -44,6 +56,9 @@ const update_status_service = async (id, data) => {
       }
     })
 };
+ /*
+    Get Overall Status of Plugins
+  */
 const plugin_status_service = async () => {
   return axios.get(`${JSON_URL}plugin_status`)
     .then((response) => {
@@ -55,6 +70,9 @@ const plugin_status_service = async () => {
       }
     })
 };
+ /*
+    Update Overall Status of Plugins
+  */
 const update_plugin_status_service = async (data) => {
   return axios.put(`${JSON_URL}plugin_status`, data)
     .then((response) => {

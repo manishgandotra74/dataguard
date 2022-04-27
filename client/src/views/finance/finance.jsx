@@ -2,17 +2,26 @@ import React from "react"
 import allActions from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
-const Card = React.lazy(() => import("../../components/card/card"));
+const Card = React.lazy(() => import("../../components/PluginCard/PluginCard"));
 export default function Finance() {
     const dispatch = useDispatch()
     const plugin = useSelector((state) => state.plugin)
+    /*
+        Get Callback from card 
+  */
     function cardCallback(value, id) {
         dispatch(allActions.pluginActions.updateStatus(id, value))
 
     }
+    /*
+        Get plugins name
+  */
     React.useEffect(() => {
         dispatch(allActions.pluginActions.getPlugins('finance'))
     }, [])
+     /*
+        Get plugins information 
+  */
     React.useEffect(() => {
         if (plugin?.plugins && plugin?.plugins.title) {
             let pluginArray = plugin?.plugins?.plugins.sort()

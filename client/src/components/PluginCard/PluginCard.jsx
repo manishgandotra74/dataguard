@@ -1,12 +1,18 @@
 import React from "react"
-import './card.css'
+import './PluginCard.css'
 import { Card, Form, Col, Row } from 'react-bootstrap'
 export default function PluginCard(props) {
   const [status, setStatus] = React.useState(true)
+  /*
+    On change Status of Plugin
+  */
   function onStatusChange() {
     setStatus(!status)
     props.cardCallback(!status, props.data)
   }
+    /*
+    On change of Status from properties status state is updated 
+  */
   React.useEffect(() => {
     setStatus(props.data.status === 'active')
   }, [props.data.status, props.status])

@@ -7,7 +7,9 @@ const Marketing = React.lazy(() => import("../views/marketing/marketing"));
 const Personnel = React.lazy(() => import("../views/personal/personal"));
 const Sidebar = React.lazy(() => import("../components/sidebar/sidebar"));
 const Header = React.lazy(() => import("../components/header/header"));
-
+ /*
+    List of routes path
+  */
 const route = [
     {
         path: "/",
@@ -26,6 +28,9 @@ const route = [
         element: <Layout component={<Personnel />} layout={<Sidebar />} header={<Header heading = {'Personnel Plugins'} /> } />,
     },
 ];
+ /*
+  Layout displayer to view header , sidenav and component as a content
+  */
 function Layout(props) {
 
     return (

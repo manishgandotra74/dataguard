@@ -1,8 +1,6 @@
 import React from "react"
 import { Nav, Form } from 'react-bootstrap'
 import { useLocation, useNavigate } from "react-router-dom";
-
-
 import './sidebar.css'
 import allActions from '../../redux/actions/index'
 import { useSelector, useDispatch } from 'react-redux'
@@ -12,20 +10,30 @@ export default function Sidebar(props) {
     const location = useLocation()
     const plugin = useSelector((state) => state.plugin)
     const [status, setStatus] = React.useState(true)
+  /*
+    On change Status of Plugin
+  */
     function onStatusChange() {
         setStatus(!status)
         dispatch(allActions.pluginActions.updatePluginStatus(!status))
         window.location.reload()
     }
-    React.useEffect(() => {
+  /*
+    On initialization Tabs and Plugin Status are fetched from API
+  */
+     React.useEffect(() => {
         dispatch(allActions.pluginActions.getTabs(''))
         dispatch(allActions.pluginActions.pluginStatus())
     }, [])
-
+  /*
+    On change Status of plugin its state is updated
+  */
     React.useEffect(() => {
         setStatus(plugin.allpluginStatus)
     }, [plugin.allpluginStatus])
-
+ /*
+    Navigation is managed to reach selected page
+  */
 
     function navigate_path(path) {
         navigate(`/${path}`);
