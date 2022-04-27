@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "json-server": "json-server --watch db.json --port 5000",
-        "dev": "concurrently \"node index.js\" \"npm run json-server\""
+        "start": "concurrently \"node index.js\" \"npm run json-server\""
     },
     "author": "",
     "license": "ISC",
