@@ -37,7 +37,6 @@ const plugin = (state = INITIAL_STATE, { type, payload } = {}) => {
                 pluginStatus: payload?.enabled,
             };
         case Types.PLUGIN_STATUS_FETCHED_SUCCESSFULLY:
-            console.log(payload);
             return {
                 ...state,
                 allpluginStatus: payload?.enabled,

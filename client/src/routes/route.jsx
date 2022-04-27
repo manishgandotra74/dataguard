@@ -1,29 +1,30 @@
 import * as React from "react"
 import { Outlet } from "react-router-dom";
-import { Container, Col, Row } from 'react-bootstrap'
+import {  Col, Row } from 'react-bootstrap'
 import './route.css'
 const Homepage = React.lazy(() => import("../views/homepage/homepage"));
 const Finance = React.lazy(() => import("../views/finance/finance"));
 const Marketing = React.lazy(() => import("../views/marketing/marketing"));
 const Personnel = React.lazy(() => import("../views/personal/personal"));
 const Sidebar = React.lazy(() => import("../components/sidebar/sidebar"));
+const Header = React.lazy(() => import("../components/header/header"));
 
 const route = [
     {
         path: "/",
-        element: <Layout component={<Homepage />} layout={<Sidebar />} />,
+        element: <Layout component={<Homepage />} layout={<Sidebar /> } header={<Header /> }/>,
     },
     {
         path: "finance",
-        element: <Layout component={<Finance />} layout={<Sidebar />} />,
+        element: <Layout component={<Finance />} layout={<Sidebar />} header={<Header heading = {'Finance Plugins'}/> } />,
     },
     {
         path: "marketing",
-        element: <Layout component={<Marketing />} layout={<Sidebar />} />,
+        element: <Layout component={<Marketing />} layout={<Sidebar />} header={<Header heading = {'Marketing Plugins'}/> } />,
     },
     {
         path: "personnel",
-        element: <Layout component={<Personnel />} layout={<Sidebar />} />,
+        element: <Layout component={<Personnel />} layout={<Sidebar />} header={<Header heading = {'Personnel Plugins'} /> } />,
     },
 ];
 function Layout(props) {
@@ -32,7 +33,11 @@ function Layout(props) {
         <div>
             <Row className="row_width">
                 <Col md={2} >{props.layout}</Col>
-                <Col md={10}>{props.component}</Col>
+                <Col md={10}>
+                    {props.header}
+                    {props.component}
+                    
+                    </Col>
 
             </Row>
             <Outlet />
