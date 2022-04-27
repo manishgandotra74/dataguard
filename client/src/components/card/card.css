@@ -1,0 +1,11 @@
+.card {
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+  min-height: 180px;
+}
+
+.qcont:first-letter {
+  font-size: 14px;
+  text-transform: capitalize
+}
