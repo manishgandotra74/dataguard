@@ -5,12 +5,14 @@ export default function PluginCard(props) {
   const [status, setStatus] = React.useState(true)
   function onStatusChange() {
     setStatus(!status)
-    props.cardCallback(!status , props.data)
+    props.cardCallback(!status, props.data)
   }
   React.useEffect(() => {
     setStatus(props.data.status === 'active')
-  }, [props.data.status])
+  }, [props.data.status, props.status])
   return <>
+
+
     <Card className="card">
       <Card.Body>
         <Row>
@@ -24,7 +26,7 @@ export default function PluginCard(props) {
             <Form.Check
               onChange={() => onStatusChange()}
               type="switch"
-              disabled={props?.data?.status === "disabled"}
+              disabled={props.status === false ? true : props.data.status === 'disabled'}
               isValid={status}
               checked={status}
               id="custom-switch"

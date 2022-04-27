@@ -7,9 +7,9 @@ const Card = React.lazy(() => import("../../components/card/card"));
 export default function Marketing() {
   const dispatch = useDispatch()
   const plugin = useSelector((state) => state.plugin)
+  console.log(plugin.allpluginStatus);
   function cardCallback( value  ,id) {
       dispatch(allActions.pluginActions.updateStatus(id ,value))
-
   }
   React.useEffect(() => {
     dispatch(allActions.pluginActions.getPlugins('marketing'))
@@ -25,6 +25,7 @@ export default function Marketing() {
     }
   }, [plugin?.plugins?.title])
   return <Row>
-  {plugin?.filteredPlugins?.map((item, index)=> <Col sm={4} key = {index}><Card data = {item} cardCallback = {cardCallback}></Card></Col>)}
+  {plugin?.filteredPlugins?.map((item, index)=> <Col sm={4} key = {index}>
+    <Card data = {item} status = {plugin.allpluginStatus} cardCallback = {cardCallback}></Card></Col>)}
   </Row>
 }

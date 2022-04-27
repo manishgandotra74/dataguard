@@ -24,6 +24,6 @@ React.useEffect(() => {
     }
   }, [plugin?.plugins?.title])
   return <Row>
-  {plugin?.filteredPlugins?.map((item, index)=> <Col sm={4} key = {index}><Card data = {item} cardCallback = {cardCallback}></Card></Col>)}
+  {plugin?.filteredPlugins?.map((item, index)=> <Col sm={4} key = {index}><Card status = {plugin.allpluginStatus} data = {item} cardCallback = {cardCallback}></Card></Col>)}
   </Row>
 }

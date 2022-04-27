@@ -13,7 +13,7 @@
     },
     {
       "id": "plugin2",
-      "status": "inactive",
+      "status": "active",
       "title": "Plugin 2",
       "description": "Proident sunt consequat exercitation incididunt cupidatat quis ut ut eu ullamco nisi excepteur aliqua."
     },
@@ -31,7 +31,7 @@
     },
     {
       "id": "plugin5",
-      "status": "active",
+      "status": "inactive",
       "title": "Plugin 5",
       "description": "Proident laborum sint nisi enim non aliqua incididunt dolor voluptate tempor."
     },
@@ -121,6 +121,6 @@
     }
   ],
   "plugin_status": {
-    "enabled": true
+    "enabled": false
   }
 }
