@@ -4,6 +4,7 @@ const jsonServer = require('json-server');
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
+const app = express()
 
 server.use(middlewares);
 server.use(router);
@@ -13,7 +14,6 @@ var _server = app.server(3001, function () {
   var port = _server.address().port;
   console.log('running ' + host + ':' + port)
 });
-const app = express()
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, './build')));
 
