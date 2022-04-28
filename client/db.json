@@ -72,7 +72,7 @@
       "description": "Consectetur sit amet velit cillum sunt cillum sunt."
     },
     {
-      "status": "inactive",
+      "status": "active",
       "id": "plugin12",
       "title": "Plugin 12",
       "description": "Exercitation in aute ut ex aliqua ea."
@@ -121,6 +121,6 @@
     }
   ],
   "plugin_status": {
-    "enabled": false
+    "enabled": true
   }
 }
