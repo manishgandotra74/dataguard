@@ -4,7 +4,8 @@ const jsonServer = require('json-server');
 const server = jsonServer.create();
 const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
-
+var os = require("os");
+console.log(os.hostname());
 server.use(middlewares);
 server.use(router);
 
@@ -19,6 +20,7 @@ app.use(express.static(path.resolve(__dirname, './build')));
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
+  console.log(req.hostname);
   res.sendFile(path.resolve(__dirname, './build', 'index.html'));
 });
 
