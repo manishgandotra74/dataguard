@@ -8,7 +8,9 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 server.use(router);
 
-server.listen(3001);
+server.listen( 3001, function(){
+  console.log("Express server listening on port %d in %s mode", this.address());
+});
 const app = express()
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, './build')));
@@ -19,5 +21,5 @@ app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, './build', 'index.html'));
 });
 app.listen(process.env.PORT || 3000, function(){
-  console.log("Express server listening on port %d in %s mode", this.address().port);
+  console.log("Express server listening on port %d in %s mode", this.address());
 });
