@@ -1,5 +1,5 @@
 import axios from 'axios'
-const JSON_URL = 'http://localhost:5000/'
+const JSON_URL = 'https://limitless-refuge-16772.herokuapp.com:5000/'
  /*
     Get All Plugins
   */

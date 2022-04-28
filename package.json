@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "json-server": "json-server --watch db.json --port 5000",
+        "json-server": "json-server --host limitless-refuge-16772.herokuapp.com --port 5000 --watch db.json ",
         "start": "concurrently \"node index.js\" \"npm run json-server\""
     },
     "author": "",
