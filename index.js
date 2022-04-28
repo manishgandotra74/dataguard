@@ -8,8 +8,10 @@ const middlewares = jsonServer.defaults();
 server.use(middlewares);
 server.use(router);
 
-server.listen( 3001, function(){
-  console.log("Express server listening on port %d in %s mode",3001);
+var _server = app.server(3001, function () {
+  var host = _server.address().address;
+  var port = _server.address().port;
+  console.log('running ' + host + ':' + port)
 });
 const app = express()
 // Have Node serve the files for our built React app
