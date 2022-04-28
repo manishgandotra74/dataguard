@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "json-server": "json-server --host 23.22.144.165 --port 5000 --watch db.json ",
-        "start": "concurrently \"node index.js\" \"npm run json-server\""
+        "json-server": "json-server --host  --port 5000 --watch db.json ",
+        "start": "node index.js"
     },
     "author": "",
     "license": "ISC",
